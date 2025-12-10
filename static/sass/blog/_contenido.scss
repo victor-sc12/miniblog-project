@@ -1,0 +1,30 @@
+@use '../base/vars' as v;
+
+.contenido {
+    display: flex;
+    flex-direction: column;
+    
+    &__title {
+        text-align: center;
+    }
+
+    &__img {
+        width: 100%;
+        height: 43rem;
+        object-fit: cover;
+    }
+
+    &__musicInfo {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 1.5rem 0;
+        padding: .3rem 0;
+        border-top: 1px v.$gris solid;
+        border-bottom: 1px v.$gris solid;
+    }
+    &__link {
+        color: v.$gris;
+        display: block;
+    }
+}

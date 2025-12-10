@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block contenido %}
+<div class="blog">
+    <div class="blog__contenedor contenedor">
+        <div class="blog__grid">
+            {% for content in contenidos %}
+            <div class="contenido">
+                <img src="{{content.musica.album.imagen.url}}" alt="{{content.musica.nombre}}" class="contenido__img">
+                <div class="contenido__info">
+                    <div class="contenido__musicInfo">
+                        <a href="#" class="contenido__link">{{content.musica.nombre}}</a>
+                        <a href="#" class="contenido__link">({{content.musica.album.artista}})</a>
+                    </div>
+                    <h2 class="contenido__title">{{content.title}}</h2>
+                    <p class="contenido__description">{{content.contenido}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

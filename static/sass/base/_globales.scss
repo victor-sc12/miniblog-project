@@ -1,0 +1,21 @@
+@use 'vars' as v;
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /* 1REM = 10px */
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-family: v.$fuente_principal;
+    font-size: 1.6rem;
+}
+h1, h2, h3 {
+    font-family: v.$fuente_heading;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+    color: v.$negro;
+}

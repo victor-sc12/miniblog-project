@@ -1,0 +1,61 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* 1REM = 10px */
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.6rem;
+}
+
+h1, h2, h3 {
+  font-family: "Quicksand", sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.contenedor {
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.blog__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.contenido {
+  display: flex;
+  flex-direction: column;
+}
+.contenido__title {
+  text-align: center;
+}
+.contenido__img {
+  width: 100%;
+  height: 43rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.contenido__musicInfo {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1.5rem 0;
+  padding: 0.3rem 0;
+  border-top: 1px #8c8c8c solid;
+  border-bottom: 1px #8c8c8c solid;
+}
+.contenido__link {
+  color: #8c8c8c;
+  display: block;
+}/*# sourceMappingURL=app.css.map */
