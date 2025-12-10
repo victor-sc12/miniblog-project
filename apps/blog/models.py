@@ -4,7 +4,7 @@ from django.db import models
 class ContenidoResenia(models.Model):
     title = models.CharField(max_length=200)
     contenido = models.TextField()
-    musica = models.ForeignKey('musica.Cancion', on_delete=models.CASCADE)
+    musica = models.ForeignKey('musica.Cancion', on_delete=models.CASCADE, related_name='resenias')
     created_date = models.DateField(auto_now_add=True)
     updated_date = models.DateField(auto_now=True)
 

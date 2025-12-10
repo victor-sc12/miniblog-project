@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block contenido %}
+
+{% for musica in musicas %}
+    <h3>{{musica.nombre}}</h3>
+    <p>{{musica.album.nombre}} -- <strong>{{musica.album.artista.nombre}}</strong></p>
+    
+    <ul>
+        {% for resenia in musica.resenias_list %}
+        <li>{{resenia.title}}</li>
+        {% empty %}
+        <li>No hay ninguna por el momento.</li>
+        {% endfor %}
+    </ul>
+    
+    <a href="{% url 'detail_view' musica.slug %}">Ver mas</a>
+
+{% empty %}
+    <p>No hay canciones :/</p>
+{% endfor %}
+
+{% endblock contenido %}

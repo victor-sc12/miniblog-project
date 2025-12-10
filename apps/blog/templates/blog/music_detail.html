@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block contenido %}
+    <h2>{{musica.nombre}}</h2>
+    <ul>
+    {% for resenia in resenias %}
+        <li><strong>{{resenia.title}}: </strong><p>{{resenia.contenido}}</p></li>
+    {% empty %}
+        <li>Que no hay resenias, necio!!</li>
+    {% endfor %}
+    </ul>
+{% endblock contenido %}
