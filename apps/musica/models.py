@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.db.models import Avg
 
 # Create your models here.
 class Artista(models.Model):
@@ -41,3 +42,10 @@ class Cancion(models.Model):
 
     def __str__(self):
         return self.nombre
+
+    @property
+    def media_rating(self):
+        resenias = self.resenias.all()
+        avg_rating = resenias.aggregate(promedio=Avg('calificacion'))
+
+        return avg_rating['promedio']

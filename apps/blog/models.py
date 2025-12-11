@@ -1,4 +1,7 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator, MaxValueValidator
+
 
 # Create your models here.
 class ContenidoResenia(models.Model):
@@ -7,6 +10,7 @@ class ContenidoResenia(models.Model):
     musica = models.ForeignKey('musica.Cancion', on_delete=models.CASCADE, related_name='resenias')
     created_date = models.DateField(auto_now_add=True)
     updated_date = models.DateField(auto_now=True)
+    calificacion = models.PositiveSmallIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
 
     def __str__(self):
         return f'{self.title}'
