@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_sass',
     'apps.blog',
     'apps.musica',
+    'apps.profiles',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Media Files
 MEDIA_URL = '/media/' # Base url to serve media files
 MEDIA_ROOT = BASE_DIR / 'media' # Path where media is stored'
+
+# Customize User model:
+AUTH_USER_MODEL = 'profiles.User'
+
+# LOGIN_URL:
+LOGIN_URL = '/admin/login/'

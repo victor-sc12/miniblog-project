@@ -1,0 +1,231 @@
+[
+{
+  "model": "musica.artista",
+  "pk": 1,
+  "fields": {
+    "nombre": "Mana"
+  }
+},
+{
+  "model": "musica.artista",
+  "pk": 2,
+  "fields": {
+    "nombre": "Luis Alberto Spinetta"
+  }
+},
+{
+  "model": "musica.artista",
+  "pk": 3,
+  "fields": {
+    "nombre": "Ed Maverick"
+  }
+},
+{
+  "model": "musica.artista",
+  "pk": 4,
+  "fields": {
+    "nombre": "Shakira"
+  }
+},
+{
+  "model": "musica.categoriamusical",
+  "pk": 1,
+  "fields": {
+    "nombre": "Dub"
+  }
+},
+{
+  "model": "musica.categoriamusical",
+  "pk": 2,
+  "fields": {
+    "nombre": "Pop Rock"
+  }
+},
+{
+  "model": "musica.categoriamusical",
+  "pk": 3,
+  "fields": {
+    "nombre": "Rock Latino"
+  }
+},
+{
+  "model": "musica.categoriamusical",
+  "pk": 4,
+  "fields": {
+    "nombre": "Rock"
+  }
+},
+{
+  "model": "musica.categoriamusical",
+  "pk": 5,
+  "fields": {
+    "nombre": "Rock Progresivo"
+  }
+},
+{
+  "model": "musica.categoriamusical",
+  "pk": 6,
+  "fields": {
+    "nombre": "Jazz Rock"
+  }
+},
+{
+  "model": "musica.categoriamusical",
+  "pk": 7,
+  "fields": {
+    "nombre": "Folk"
+  }
+},
+{
+  "model": "musica.categoriamusical",
+  "pk": 8,
+  "fields": {
+    "nombre": "Alterlatino"
+  }
+},
+{
+  "model": "musica.categoriamusical",
+  "pk": 9,
+  "fields": {
+    "nombre": "Sadcore"
+  }
+},
+{
+  "model": "musica.categoriamusical",
+  "pk": 10,
+  "fields": {
+    "nombre": "Pop Latino"
+  }
+},
+{
+  "model": "musica.categoriamusical",
+  "pk": 11,
+  "fields": {
+    "nombre": "Soft Rock"
+  }
+},
+{
+  "model": "musica.album",
+  "pk": 1,
+  "fields": {
+    "nombre": "Amar es combatir",
+    "description": "",
+    "year": "2006-08-22",
+    "artista": 1,
+    "imagen": "",
+    "categorias": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "musica.album",
+  "pk": 2,
+  "fields": {
+    "nombre": "A 18' del sol",
+    "description": "",
+    "year": "1977-10-07",
+    "artista": 2,
+    "imagen": "",
+    "categorias": [
+      4,
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "musica.album",
+  "pk": 3,
+  "fields": {
+    "nombre": "Eduardo",
+    "description": "",
+    "year": "2021-04-30",
+    "artista": 3,
+    "imagen": "",
+    "categorias": [
+      7,
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "musica.album",
+  "pk": 4,
+  "fields": {
+    "nombre": "Fijaci�n oral vol. 1",
+    "description": "",
+    "year": "2005-06-03",
+    "artista": 4,
+    "imagen": "",
+    "categorias": [
+      2,
+      10,
+      11
+    ]
+  }
+},
+{
+  "model": "musica.cancion",
+  "pk": 1,
+  "fields": {
+    "nombre": "Labios Compartidos",
+    "description": "",
+    "slug": "labios-compartidos",
+    "album": 1
+  }
+},
+{
+  "model": "musica.cancion",
+  "pk": 2,
+  "fields": {
+    "nombre": "Canci�n para los d�as de la vida",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec ligula nulla. Duis at justo vitae eros tempor commodo id vel ligula. Suspendisse potenti. Mauris interdum aliquam tincidunt. Quisque maximus nec libero ut dignissim. Ut tempor erat et ullamcorper vehicula. In quis sem tortor. Aliquam sapien urna, laoreet et rhoncus ac, auctor nec orci. Quisque scelerisque fermentum elit, non consequat quam. Vivamus quis nulla id arcu dignissim accumsan. Aenean ac nisl nec ipsum maximus placerat. Nunc at consectetur augue. In posuere sem eu turpis venenatis commodo. Duis aliquam ullamcorper ipsum, vel rhoncus felis pellentesque et. Fusce id elit ultricies, viverra dolor a, hendrerit dolor. Mauris vitae pharetra lectus.",
+    "slug": "cancion-para-los-dias-de-la-vida",
+    "album": 2
+  }
+},
+{
+  "model": "musica.cancion",
+  "pk": 3,
+  "fields": {
+    "nombre": "Contenta",
+    "description": "",
+    "slug": "contenta",
+    "album": 3
+  }
+},
+{
+  "model": "musica.cancion",
+  "pk": 4,
+  "fields": {
+    "nombre": "Las de la intuici�n",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu risus faucibus erat mollis dapibus. Cras lacus quam, efficitur ut nulla at, dictum interdum leo. Phasellus sit amet vehicula tellus. Cras posuere placerat pulvinar. Phasellus ullamcorper aliquam fringilla. Etiam a sollicitudin enim. Sed mollis, purus elementum scelerisque commodo, elit nisi pellentesque ligula, eu lobortis massa enim auctor eros. Donec pulvinar blandit lectus ac rhoncus.",
+    "slug": "las-de-la-intuicion",
+    "album": 4
+  }
+},
+{
+  "model": "musica.cancion",
+  "pk": 6,
+  "fields": {
+    "nombre": "Nos queda mucho dolor por recorrer",
+    "description": "",
+    "slug": "nos-queda-mucho-dolor-por-recorrer",
+    "album": 3
+  }
+},
+{
+  "model": "musica.cancion",
+  "pk": 7,
+  "fields": {
+    "nombre": "Manda una se�al",
+    "description": "",
+    "slug": "manda-una-senal",
+    "album": 1
+  }
+}
+]

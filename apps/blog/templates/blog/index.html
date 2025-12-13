@@ -2,6 +2,11 @@
 {% block title %}Home{% endblock title %}
 {% block contenido %}
 
+<form action="" method="get">
+    <input type="text" name="query_search" placeholder="Find by song, album or author", value="{% if query_search %}{{query_search}}{% endif %}">
+    <button type="submit">buscar</button>
+</form>
+
 {% for musica in musicas %}
     <h3>{{musica.nombre}}</h3>
     <p>{{musica.album.nombre}} -- <strong>{{musica.album.artista.nombre}}</strong> -- Rating promedio: {{musica.media_rating}}</p>
@@ -14,11 +19,16 @@
         {% endfor %}
     </ul>
     
-    <a href="{% url 'detail_view' musica.slug %}">Ver mas</a> |
-    <a href="{% url 'add_resenia' musica.slug %}">Añadir resenia</a>
+    <p><a href="{% url 'detail_view' musica.slug %}">Ver mas</a> |
+    <a href="{% url 'add_resenia' musica.slug %}">Añadir resenia</a></p>
 
 {% empty %}
     <p>No hay canciones :/</p>
 {% endfor %}
+
+<!-- paginator -->
+{% if musicas.has_previous %}<a href="?page={{musicas.previous_page_number}}">previous page</a>{% endif %}
+<span>page {{musicas.number}} of {{musicas.paginator.num_pages}}</span>
+{% if musicas.has_next %}<a href="?page={{musicas.next_page_number}}">next page</a>{% endif %}
 
 {% endblock contenido %}

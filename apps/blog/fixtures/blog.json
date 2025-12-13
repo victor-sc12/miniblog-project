@@ -1,0 +1,86 @@
+[
+{
+  "model": "blog.contenidoresenia",
+  "pk": 1,
+  "fields": {
+    "title": "Buenarda la rola",
+    "contenido": "\"Lorem ipsum\" es un texto de relleno estandar utilizado en diseño gráfico, web y editorial para simular texto en maquetas y demostraciones antes de tener el contenido final. Proviene de un texto cl�sico latino del fil�sofo Cicer�n, pero se ha alterado para que sea incomprensible, ya que su prop�sito es mostrar c�mo se ver� el dise�o y el texto sin distraer con el contenido real.",
+    "musica": 1,
+    "created_date": "2025-11-08",
+    "updated_date": "2025-11-08",
+    "calificacion": 1
+  }
+},
+{
+  "model": "blog.contenidoresenia",
+  "pk": 2,
+  "fields": {
+    "title": "Spinetta's master piece",
+    "contenido": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec ligula nulla. Duis at justo vitae eros tempor commodo id vel ligula. Suspendisse potenti. Mauris interdum aliquam tincidunt. Quisque maximus nec libero ut dignissim. Ut tempor erat et ullamcorper vehicula. In quis sem tortor. Aliquam sapien urna, laoreet et rhoncus ac, auctor nec orci. Quisque scelerisque fermentum elit, non consequat quam. Vivamus quis nulla id arcu dignissim accumsan. Aenean ac nisl nec ipsum maximus placerat. Nunc at consectetur augue. In posuere sem eu turpis venenatis commodo. Duis aliquam ullamcorper ipsum, vel rhoncus felis pellentesque et. Fusce id elit ultricies, viverra dolor a, hendrerit dolor. Mauris vitae pharetra lectus.",
+    "musica": 2,
+    "created_date": "2025-11-09",
+    "updated_date": "2025-11-09",
+    "calificacion": 1
+  }
+},
+{
+  "model": "blog.contenidoresenia",
+  "pk": 3,
+  "fields": {
+    "title": "Saquen saquen",
+    "contenido": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum nunc sit amet felis tristique consequat. Suspendisse diam dui, ullamcorper facilisis felis et, accumsan euismod quam. Sed est sapien, convallis at hendrerit et, tincidunt vitae turpis. Duis et libero viverra, varius risus ac, molestie turpis. Ut volutpat fermentum mauris, id pellentesque diam aliquet id. Phasellus id neque maximus lectus rhoncus viverra. Suspendisse ultricies massa non arcu vulputate vulputate. Nullam convallis at tellus sit amet viverra. Vestibulum auctor ultrices nisl nec viverra. Quisque convallis sollicitudin elit quis faucibus.",
+    "musica": 3,
+    "created_date": "2025-11-09",
+    "updated_date": "2025-12-10",
+    "calificacion": 1
+  }
+},
+{
+  "model": "blog.contenidoresenia",
+  "pk": 4,
+  "fields": {
+    "title": "Creooo que empiezooo a entendeeer!!!",
+    "contenido": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu risus faucibus erat mollis dapibus. Cras lacus quam, efficitur ut nulla at, dictum interdum leo. Phasellus sit amet vehicula tellus. Cras posuere placerat pulvinar. Phasellus ullamcorper aliquam fringilla. Etiam a sollicitudin enim. Sed mollis, purus elementum scelerisque commodo, elit nisi pellentesque ligula, eu lobortis massa enim auctor eros. Donec pulvinar blandit lectus ac rhoncus.",
+    "musica": 4,
+    "created_date": "2025-11-09",
+    "updated_date": "2025-11-09",
+    "calificacion": 1
+  }
+},
+{
+  "model": "blog.contenidoresenia",
+  "pk": 5,
+  "fields": {
+    "title": "Shakira 2000's >>> Shakira 2020's",
+    "contenido": "Lorem ipsum es el texto que se usa habitualmente en dise�o gr�fico en demostraciones de tipograf�as o de bocetos para dise�os para probar el arte visual antes de insertar el texto final.",
+    "musica": 4,
+    "created_date": "2025-12-10",
+    "updated_date": "2025-12-10",
+    "calificacion": 5
+  }
+},
+{
+  "model": "blog.contenidoresenia",
+  "pk": 6,
+  "fields": {
+    "title": "Sin edad",
+    "contenido": "dwedmewkfnwen",
+    "musica": 2,
+    "created_date": "2025-12-11",
+    "updated_date": "2025-12-11",
+    "calificacion": 2
+  }
+},
+{
+  "model": "blog.contenidoresenia",
+  "pk": 7,
+  "fields": {
+    "title": "Ah� estaN",
+    "contenido": "vERTICAL Y TRANSVERSAL. Soy grito y soy cristal.",
+    "musica": 2,
+    "created_date": "2025-12-11",
+    "updated_date": "2025-12-11",
+    "calificacion": 3
+  }
+}
+]
