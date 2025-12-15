@@ -137,5 +137,7 @@ MEDIA_ROOT = BASE_DIR / 'media' # Path where media is stored'
 # Customize User model:
 AUTH_USER_MODEL = 'profiles.User'
 
-# LOGIN_URL:
-LOGIN_URL = '/admin/login/'
+# LOG Manage:
+LOGIN_REDIRECT_URL = 'index_view'
+LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'login'

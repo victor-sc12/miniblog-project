@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block contenido %}
+    <h2>{{musica.nombre}} | Editar Reseña</h2>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Update reseña</button>
+    </form>
+{% endblock contenido %}

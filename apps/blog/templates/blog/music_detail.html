@@ -8,5 +8,6 @@
         <li>Que no hay resenias, necio!!</li>
     {% endfor %}
     </ul>
-    <a href="{% url 'add_resenia' musica.slug %}">Añadir resenia</a>
+    {% if not musica.has_review %}<a href="{% url 'add_resenia' musica.slug %}">Añadir resenia</a>
+    {% else %}<a href="#">Editar resenia</a>{% endif %}
 {% endblock contenido %}

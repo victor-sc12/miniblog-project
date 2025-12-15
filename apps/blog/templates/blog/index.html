@@ -17,10 +17,11 @@
         {% empty %}
         <li>No hay ninguna por el momento.</li>
         {% endfor %}
-    </ul>
+    </ul>   
     
     <p><a href="{% url 'detail_view' musica.slug %}">Ver mas</a> |
-    <a href="{% url 'add_resenia' musica.slug %}">Añadir resenia</a></p>
+    {% if not musica.has_review %}<a href="{% url 'add_resenia' musica.slug %}">Añadir resenia</a>
+    {% else %}<a href="{% url 'update_resenia' musica.slug %}">Actualizar resenia</a>{% endif %}</p>
 
 {% empty %}
     <p>No hay canciones :/</p>

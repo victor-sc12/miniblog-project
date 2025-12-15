@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q
-from .models import ContenidoResenia
+from apps.blog.models import *
 from apps.musica.models import *
 from .forms import ContenidoReseniaForm
 from django.core.paginator import Paginator
@@ -35,6 +35,9 @@ def index(request):
     for musica in musicas:
         musica.resenias_list = musica.resenias.all()
 
+        # Comprobar si current user has review en la canción:
+        musica.has_review = musica.resenias.filter(user=request.user).exists()
+
     # definición de paginator:
     paginator = Paginator(musicas, 4)
     page_number = request.GET.get('page')
@@ -42,11 +45,14 @@ def index(request):
     
     return render(request, 'blog/index.html', {'musicas': page_obj, 'fav_artista':fav_artista, 'query_search':query_search})
 
+@login_required
 def detail_view(request, slug):
     musica = Cancion.objects.prefetch_related('resenias').get(slug=slug)
+    musica.has_review = musica.resenias.filter(user=request.user).exists()
     resenias = musica.resenias.all()
     return render(request, 'blog/music_detail.html', {'musica':musica, 'resenias':resenias})
 
+@login_required
 def add_resenia(request, slug):
     
     musica = Cancion.objects.get(slug=slug)
@@ -56,6 +62,7 @@ def add_resenia(request, slug):
         if form.is_valid():
             resenia = form.save(commit=False)
             resenia.musica = musica
+            resenia.user = request.user
             resenia.save()
 
             return redirect('detail_view', slug = slug)
@@ -63,3 +70,19 @@ def add_resenia(request, slug):
         form = ContenidoReseniaForm()
 
     return render(request, 'blog/add_resenia.html', {'form':form, 'musica':musica})
+
+@login_required
+def edit_resenia(request, slug):
+    
+    resenia = ContenidoResenia.objects.select_related('musica', 'user').get(musica__slug=slug, user=request.user)
+    musica = resenia.musica
+
+    if request.method == 'POST':
+        form = ContenidoReseniaForm(request.POST, instance=resenia)
+        if form.is_valid:
+            form.save()
+            return redirect('detail_view', slug = slug)
+    else:
+        form = ContenidoReseniaForm(instance=resenia)
+
+    return render(request, 'blog/update_resenia.html', {'form':form, 'musica':musica})
