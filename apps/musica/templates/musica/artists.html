@@ -2,6 +2,6 @@
 {% block contenido %}
     {% for artista in artistas %}
         <p>{{artista.nombre}} -- {{artista.media_rating}}</p>
-        <a href="{% url 'add_album' artista.id %}">Agregar Nuevo Albúm</a>
+        <a href="{% url 'add_album' artista.slug %}">Agregar Nuevo Albúm</a>
     {% endfor %}
 {% endblock contenido %}

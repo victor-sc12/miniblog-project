@@ -1,10 +1,12 @@
 from django.db import models
 from django.utils.text import slugify
 from django.db.models import Avg
+from django.utils.text import slugify
 
 # Create your models here.
 class Artista(models.Model):
     nombre = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True, null=True)
 
     def __str__(self):
         return self.nombre
@@ -24,7 +26,11 @@ class Artista(models.Model):
 
         if cont == 0:
             return None
-        return sum_avgs / cont        
+        return sum_avgs / cont   
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.nombre)
+        super().save(*args, **kwargs)     
 
 class CategoriaMusical(models.Model):
     nombre = models.CharField(max_length=200)

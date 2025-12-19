@@ -18,6 +18,7 @@ class CancionInline(admin.StackedInline):
 @admin.register(Artista)
 class ArtistaAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'albumes',]
+    readonly_fields = ['slug',]
     inlines = [AlbumInline]
 
 @admin.register(Album)
