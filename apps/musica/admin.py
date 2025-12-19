@@ -47,10 +47,11 @@ class CancionAdmin(admin.ModelAdmin):
             'fields': ('nombre', 'album')
         }),
         ('Detalles', {
-            'fields': ('slug', 'description'),
+            'fields': ('slug', 'description', 'avg_rating'),
             'classes': ('collapse',)
         })
     )
+    readonly_fields = ['avg_rating',]
 
 # Register your models here.
 admin.site.register(CategoriaMusical)

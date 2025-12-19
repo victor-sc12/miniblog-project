@@ -4,3 +4,6 @@ from django.apps import AppConfig
 class MusicaConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'apps.musica'
+
+    def ready(self):
+        from . import signals

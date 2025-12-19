@@ -86,3 +86,13 @@ def edit_resenia(request, slug):
         form = ContenidoReseniaForm(instance=resenia)
 
     return render(request, 'blog/update_resenia.html', {'form':form, 'musica':musica})
+
+@login_required
+def delete_resenia(request, slug):
+    resenia = ContenidoResenia.objects.select_related('musica', 'user').get(musica__slug=slug, user=request.user)
+    
+    if request.method == 'POST':
+        resenia.delete()
+        return redirect('detail_view', slug)
+    
+    return render(request, 'blog/delete_confirm.html', {'resenia':resenia})

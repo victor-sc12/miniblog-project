@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block contenido %}
+    <h2>{{resenia.musica.nombre}} | Eliminar Reseña</h2>
+    <h3>{{resenia.title}}</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>¿Seguro que deseas eliminar tu reseña?</p>
+        <button type="submit">Eliminar</button>
+        <a href="{% url 'detail_view' resenia.musica.slug %}">Cancelar</a>
+    </form>
+{% endblock contenido %}

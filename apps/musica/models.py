@@ -12,6 +12,19 @@ class Artista(models.Model):
     @property
     def albumes(self):
         return self.albums.count()
+    
+    @property
+    def media_rating(self):
+        sum_avgs, cont = 0, 0
+        for album in self.albums.all():
+            if album.canciones.exclude(avg_rating=None):
+                promedio = album.canciones.aggregate(promedio=Avg('avg_rating'))
+                cont += 1
+                sum_avgs += promedio['promedio']
+
+        if cont == 0:
+            return None
+        return sum_avgs / cont        
 
 class CategoriaMusical(models.Model):
     nombre = models.CharField(max_length=200)
@@ -39,13 +52,18 @@ class Cancion(models.Model):
     description = models.TextField(blank=True, null=True)
     slug = models.SlugField(max_length=200, unique=True, null=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='canciones')
+    avg_rating = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True, default=None)
 
     def __str__(self):
         return self.nombre
 
-    @property
     def media_rating(self):
+        if not self.id:
+            return None
         resenias = self.resenias.all()
         avg_rating = resenias.aggregate(promedio=Avg('calificacion'))
-
         return avg_rating['promedio']
+
+    def save(self, **kwargs):
+        self.avg_rating = self.media_rating()
+        super().save(**kwargs)

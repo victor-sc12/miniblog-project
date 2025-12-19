@@ -9,5 +9,8 @@
     {% endfor %}
     </ul>
     {% if not musica.has_review %}<a href="{% url 'add_resenia' musica.slug %}">Añadir resenia</a>
-    {% else %}<a href="#">Editar resenia</a>{% endif %}
+    {% else %}
+    <a href="#">Editar resenia</a> |
+    <a href="{% url 'delete_resenia' musica.slug %}">Eliminar resenia</a>
+    {% endif %}
 {% endblock contenido %}

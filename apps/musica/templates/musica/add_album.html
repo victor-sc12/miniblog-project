@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block contenido %}
+    <h2>Añadir albúm</h2>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Add albúm</button>
+    </form>
+{% endblock contenido %}

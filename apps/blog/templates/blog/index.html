@@ -9,7 +9,7 @@
 
 {% for musica in musicas %}
     <h3>{{musica.nombre}}</h3>
-    <p>{{musica.album.nombre}} -- <strong>{{musica.album.artista.nombre}}</strong> -- Rating promedio: {{musica.media_rating}}</p>
+    <p>{{musica.album.nombre}} -- <strong>{{musica.album.artista.nombre}}</strong> -- Rating promedio: {{musica.avg_rating}}</p>
     
     <ul>
         {% for resenia in musica.resenias_list %}
