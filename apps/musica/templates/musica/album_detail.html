@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block contenido %}
+    <h2>{{album.nombre}} | Detalle</h2>
+    
+    <p>Artista: {{album.artista.nombre}}</p>
+    <p>Canciones ({{album.songs}}):</p>
+    <ul>
+        {% for cancion in canciones %}
+            <li>{{cancion.nombre}}</li>
+        {% empty %}
+            <li>No se han registrado canciones en este album</li>
+        {% endfor %}
+    </ul>
+{% endblock contenido %}

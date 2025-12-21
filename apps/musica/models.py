@@ -40,6 +40,7 @@ class CategoriaMusical(models.Model):
 
 class Album(models.Model):
     nombre = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True, null=True)
     description = models.TextField(blank=True, null=True)
     year = models.DateField()
     artista = models.ForeignKey(Artista, on_delete=models.CASCADE, related_name='albums')
@@ -52,6 +53,10 @@ class Album(models.Model):
     @property
     def songs(self):
         return self.canciones.count()
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.nombre)
+        super().save(*args, **kwargs)
 
 class Cancion(models.Model):
     nombre = models.CharField(max_length=200)

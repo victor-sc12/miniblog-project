@@ -1,7 +1,32 @@
 {% extends "base.html" %}
 {% block contenido %}
-    {% for artista in artistas %}
-        <p>{{artista.nombre}} -- {{artista.media_rating}}</p>
-        <a href="{% url 'add_album' artista.slug %}">Agregar Nuevo Albúm</a>
-    {% endfor %}
+    <table>
+        <tr>
+            <th>Artista</th>
+            <th>Calificacion</th>
+            <th>Albumes</th>
+        </tr>
+        {% for artist in artistas %}
+        <tr>
+            <td>{{artist.nombre}}</td>
+            <td>{{artist.media_rating}}</td>
+            <td>
+                <ul>
+                {% for album in artist.albumes_list %}
+                    <li><a href="{% url 'detail_album' album.slug %}" style="text-decoration: none;">{{album.nombre}}</a></li>
+                {% empty %}
+                    <li>There's no albums</li>
+                {% endfor %}
+                    <li><a href="{% url 'add_album' artist.slug %}">(Agregar Nuevo Albúm)</a></li>
+                </ul>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td>No hay artistas que mostrar</td>
+            <td>No hay calificacion que mostrar</td>
+            <td>No hay albumes que mostrar</td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock contenido %}

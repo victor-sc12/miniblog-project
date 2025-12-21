@@ -26,13 +26,14 @@ class AlbumAdmin(admin.ModelAdmin):
     list_filter = ['artista__nombre', 'categorias__nombre', 'year']
     list_display = ['nombre', 'artista', 'songs', 'year']
     search_fields = ['nombre', 'artista__nombre']
+    readonly_fields = ['slug',]
     inlines = [CancionInline]
     fieldsets = (
         ('General', {
             'fields': ('nombre', 'artista', 'year')
         }),
         ('Detalles', {
-            'fields': ('description', 'imagen', 'categorias'),
+            'fields': ('slug', 'description', 'imagen', 'categorias'),
             'classes': ('collapse',)
         })
     )

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.blog',
     'apps.musica',
     'apps.profiles',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
