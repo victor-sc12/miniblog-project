@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block contenido %}
+    <h2>Eliminar Álbum | {{album.nombre}}</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p><strong>¿Seguro que deseas eliminar este albúm y todas sus canciones ({{album.songs}})?</strong></p>
+        <button type="submit">Eliminar</button>
+        <a href="{% url 'detail_album' album.slug %}">Cancelar</a>
+    </form>
+{% endblock contenido %}

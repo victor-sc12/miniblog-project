@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    <h2>Actualizar Álbum | {{album.nombre}}</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Update Album</button>
+    </form>
+{% endblock contenido %}

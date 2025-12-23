@@ -11,4 +11,7 @@
             <li>No se han registrado canciones en este album</li>
         {% endfor %}
     </ul>
+    {% if perms.musica.change_album %}<a href="{% url 'update_album' album.slug %}">Actulizar</a>{% endif %}
+    |
+    {% if perms.musica.delete_album %}<a href="{% url 'delete_album' album.slug %}">Eliminar</a>{% endif %}
 {% endblock contenido %}
