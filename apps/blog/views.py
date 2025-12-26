@@ -4,26 +4,32 @@ from apps.blog.models import *
 from apps.musica.models import *
 from .forms import ContenidoReseniaForm
 from django.core.paginator import Paginator
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
-@login_required
 def index(request):
-
     musicas = Cancion.objects.select_related('album__artista').prefetch_related('resenias')
     
-    # Catch 'fav_artista'
-    if request.user.is_blogger:
-        fav_artista = request.user.blogger_profile.artista.nombre
-    else:
-        fav_artista = None
+    # print(request.user)
 
-    # 1st session:
-    if not request.session.get('first_session'):
-        request.session['first_session'] = True
-        query_search = fav_artista
+    if request.user.is_authenticated:
+        # Catch 'fav_artista'
+        if request.user.is_blogger:
+            fav_artista = request.user.blogger_profile.artista.nombre
+        else:
+            fav_artista = None
+
+        # 1st session:
+        if not request.session.get('first_session'):
+            request.session['first_session'] = True
+            query_search = fav_artista
+        else:
+            query_search = request.GET.get('query_search', None)
+
     else:
-        query_search = request.GET.get('query_search')
+        query_search = request.GET.get('query_search', None)
+
+    print(query_search)
 
     # fiter using 'query_search':
     if query_search:
@@ -35,24 +41,26 @@ def index(request):
     for musica in musicas:
         musica.resenias_list = musica.resenias.all()
 
-        # Comprobar si current user has review en la canción:
-        musica.has_review = musica.resenias.filter(user=request.user).exists()
+        if request.user.is_authenticated:
+            # Comprobar si current user has review en la canción:
+            musica.has_review = musica.resenias.filter(user=request.user).exists()
 
     # definición de paginator:
     paginator = Paginator(musicas, 4)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     
-    return render(request, 'blog/index.html', {'musicas': page_obj, 'fav_artista':fav_artista, 'query_search':query_search})
+    return render(request, 'blog/index.html', {'musicas': page_obj, 'query_search':query_search})
 
-@login_required
 def detail_view(request, slug):
     musica = Cancion.objects.prefetch_related('resenias').get(slug=slug)
-    musica.has_review = musica.resenias.filter(user=request.user).exists()
+    if request.user.is_authenticated:
+        musica.has_review = musica.resenias.filter(user=request.user).exists()
     resenias = musica.resenias.all()
     return render(request, 'blog/music_detail.html', {'musica':musica, 'resenias':resenias})
 
 @login_required
+@permission_required('blog.add_contenidoresenia', raise_exception=True)
 def add_resenia(request, slug):
     
     musica = Cancion.objects.get(slug=slug)

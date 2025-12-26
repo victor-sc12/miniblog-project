@@ -19,9 +19,13 @@
         {% endfor %}
     </ul>   
     
-    <p><a href="{% url 'detail_view' musica.slug %}">Ver mas</a> |
-    {% if not musica.has_review %}<a href="{% url 'add_resenia' musica.slug %}">Añadir resenia</a>
-    {% else %}<a href="{% url 'update_resenia' musica.slug %}">Actualizar resenia</a>{% endif %}</p>
+    <p><a href="{% url 'detail_view' musica.slug %}">Ver mas</a> 
+    {% if user.is_authenticated %}
+        |
+        {% if not musica.has_review %}<a href="{% url 'add_resenia' musica.slug %}">Añadir resenia</a>
+        {% else %}<a href="{% url 'update_resenia' musica.slug %}">Actualizar resenia</a>{% endif %}
+    {% endif %}
+    </p>
 
 {% empty %}
     <p>No hay canciones :/</p>

@@ -8,9 +8,11 @@
         <li>Que no hay resenias, necio!!</li>
     {% endfor %}
     </ul>
-    {% if not musica.has_review %}<a href="{% url 'add_resenia' musica.slug %}">Añadir resenia</a>
-    {% else %}
-    <a href="#">Editar resenia</a> |
-    <a href="{% url 'delete_resenia' musica.slug %}">Eliminar resenia</a>
+    {% if user.is_authenticated %}
+        {% if not musica.has_review %}<a href="{% url 'add_resenia' musica.slug %}">Añadir resenia</a>
+        {% else %}
+        <a href="#">Editar resenia</a> |
+        <a href="{% url 'delete_resenia' musica.slug %}">Eliminar resenia</a>
+        {% endif %}
     {% endif %}
 {% endblock contenido %}

@@ -17,7 +17,10 @@
                 {% empty %}
                     <li>There's no albums</li>
                 {% endfor %}
+                
+                {% if user.is_authenticated and perms.musica.add_album %}
                     <li><a href="{% url 'add_album' artist.slug %}">(Agregar Nuevo Albúm)</a></li>
+                {% endif %}
                 </ul>
             </td>
         </tr>

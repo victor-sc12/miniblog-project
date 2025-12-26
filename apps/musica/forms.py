@@ -9,3 +9,12 @@ class AlbumForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(AlbumForm, self).__init__(*args, **kwargs)
         self.fields['artista'].disabled = True
+
+class CancionForm(forms.ModelForm):
+    class Meta:
+        model = Cancion
+        exclude = ['avg_rating',]
+    
+    def __init__(self, *args, **kwargs):
+        super(CancionForm, self).__init__(*args, **kwargs)
+        self.fields['album'].disabled = True

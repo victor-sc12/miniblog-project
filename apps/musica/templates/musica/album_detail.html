@@ -10,8 +10,12 @@
         {% empty %}
             <li>No se han registrado canciones en este album</li>
         {% endfor %}
+        {% if perms.musica.add_cancion %}
+            <li><a href="{% url 'add_cancion' album.slug %}">Añadir Cancion</a></li>
+        {% endif %}
     </ul>
     {% if perms.musica.change_album %}<a href="{% url 'update_album' album.slug %}">Actulizar</a>{% endif %}
     |
     {% if perms.musica.delete_album %}<a href="{% url 'delete_album' album.slug %}">Eliminar</a>{% endif %}
+
 {% endblock contenido %}
