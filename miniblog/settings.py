@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_sass',
+    # 'django_sass', 
     'apps.blog',
     'apps.musica',
     'apps.profiles',
