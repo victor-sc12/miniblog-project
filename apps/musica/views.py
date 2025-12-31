@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required, permission_required
-from django.forms import inlineformset_factory
 
 # Create your views here.
 
@@ -66,13 +65,12 @@ def album_delete(request, slug):
 # Cancion CRUD Views:
 def add_inline_songs(request, slug):
     album = Album.objects.get(slug = slug)
-    CancionInlineFormSet = inlineformset_factory(Album, Cancion, exclude=['avg_rating', 'slug'], extra=1, can_delete=False)
     if request.method == 'POST':
         formset = CancionInlineFormSet(request.POST, instance=album)
         if formset.is_valid():
             formset.save()
             return redirect('detail_album', slug=slug)
     else:
-        formset = CancionInlineFormSet(instance=album)
+        formset = CancionInlineFormSet(queryset=Cancion.objects.none(), instance=album)
 
-    return render(request, 'musica/add_cancion.html', {'form':formset})
+    return render(request, 'musica/add_cancion.html', {'formset':formset})
