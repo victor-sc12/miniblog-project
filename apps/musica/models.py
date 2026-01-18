@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
-from django.db.models import Avg
+from django.db.models import Avg, Count
 from django.utils.text import slugify
 
 # Create your models here.
@@ -67,6 +67,10 @@ class Cancion(models.Model):
 
     def __str__(self):
         return self.nombre
+
+    @property
+    def resenias_count(self):
+        return self.resenias.count()
 
     def media_rating(self):
         if not self.id:

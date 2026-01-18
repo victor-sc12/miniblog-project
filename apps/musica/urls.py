@@ -5,11 +5,14 @@ urlpatterns = [
     
     # Album management urls:
     path('artists/', views.artists_view, name='artists_view'),
-    path('add/<slug:slug>/album/', views.add_album, name='add_album'),
-    path('<slug:slug>/detail/', views.album_detail, name='detail_album'),
-    path('<slug:slug>/update/', views.album_update, name='update_album'),
-    path('<slug:slug>/delete/', views.album_delete, name='delete_album'),
+    path('album/<slug:slug>/add/', views.add_album, name='add_album'),
+    path('album/<slug:slug>/detail/', views.album_detail, name='detail_album'),
+    path('album/<slug:slug>/update/', views.album_update, name='update_album'),
+    path('album/<slug:slug>/delete/', views.album_delete, name='delete_album'),
     
     # Cancion management urls:
-    path('add/<slug:slug>/song/', views.add_inline_songs, name='add_cancion'),
+    path('<slug:slug>/add/', views.add_song, name='add_cancion'),
+    path('<slug:slug>/detail/', views.detail_song, name='detail_cancion'),
+    path('<slug:slug>/update/', views.update_song, name='update_cancion'),
+    path('<slug:slug>/delete/', views.delete_song, name='delete_cancion'),
 ]

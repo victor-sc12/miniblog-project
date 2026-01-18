@@ -63,14 +63,45 @@ def album_delete(request, slug):
     return render(request, 'musica/album_delete.html', {'album': album})
 
 # Cancion CRUD Views:
-def add_inline_songs(request, slug):
+def detail_song(request, slug):
+    cancion = Cancion.objects.select_related('album__artista').get(slug = slug)
+    return render(request, 'musica/cancion_detail.html', {'cancion':cancion})
+
+@login_required
+@permission_required('musica.add_cancion', raise_exception=True)
+def add_song(request, slug):
     album = Album.objects.get(slug = slug)
     if request.method == 'POST':
-        formset = CancionInlineFormSet(request.POST, instance=album)
-        if formset.is_valid():
-            formset.save()
+        form = CancionForm(request.POST, initial={'album':album})
+        if form.is_valid():
+            form.save()
             return redirect('detail_album', slug=slug)
     else:
-        formset = CancionInlineFormSet(queryset=Cancion.objects.none(), instance=album)
+        form = CancionForm(initial={'album':album})
 
-    return render(request, 'musica/add_cancion.html', {'formset':formset})
+    return render(request, 'musica/add_cancion.html', {'form':form})
+
+@login_required
+@permission_required('musica.change_cancion', raise_exception=True)
+def update_song(request, slug):
+    cancion = Cancion.objects.select_related('album').get(slug=slug)
+    if request.method == 'POST':
+        form = CancionForm(request.POST, instance=cancion)
+        if form.is_valid():
+            form.save()
+            return redirect('detail_album', slug=cancion.album.slug)
+    else:
+        form = CancionForm(instance=cancion)
+
+    return render(request, 'musica/cancion_update.html', {'form':form})
+
+@login_required
+@permission_required('musica.delete_cancion', raise_exception=True)
+def delete_song(request, slug):
+    cancion = Cancion.objects.get(slug=slug)
+
+    if request.method == 'POST':    
+        cancion.delete()
+        return redirect('detail_album', slug=cancion.album.slug)
+    
+    return render(request, 'musica/cancion_delete.html', {'cancion': cancion})

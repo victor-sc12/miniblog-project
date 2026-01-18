@@ -1,6 +1,6 @@
 from django import forms
 from .models import *
-from django.forms import inlineformset_factory
+from django.forms import inlineformset_factory, formset_factory, modelformset_factory, BaseInlineFormSet
 
 class AlbumForm(forms.ModelForm):
     class Meta:
@@ -17,7 +17,5 @@ class CancionForm(forms.ModelForm):
         exclude = ['avg_rating', 'slug',]
     
     def __init__(self, *args, **kwargs):
-        super(CancionForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['album'].disabled = True
-
-CancionInlineFormSet = inlineformset_factory(Album, Cancion, form=CancionForm, extra=2, can_delete=False)

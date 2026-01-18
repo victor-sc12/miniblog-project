@@ -6,7 +6,7 @@
     <p>Canciones ({{album.songs}}):</p>
     <ul>
         {% for cancion in canciones %}
-            <li>{{cancion.nombre}}</li>
+            <li><a href="{% url 'detail_cancion' cancion.slug %}" style="text-decoration: none; color: black;">{{cancion.nombre}}</a></li>
         {% empty %}
             <li>No se han registrado canciones en este album</li>
         {% endfor %}

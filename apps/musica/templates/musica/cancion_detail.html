@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<h2>{{cancion.nombre}}</h2>
+<ul>
+    <li>Artista: {{cancion.album.artista.nombre}}</li>
+    <li>Album: {{cancion.album.nombre}}</li>
+    {% if cancion.description %}
+    <li>Descripción:
+    <p>{{cancion.description}}</p>
+    </li>
+    {% endif %}
+    <li>Cantidad de resenias: {{cancion.resenias_count}}</li>
+    <li>Rating promedio: {{cancion.avg_rating}}</li>
+
+    {% if perms.musica.change_cancion %}<a style="display: block;" href="{% url 'update_cancion' cancion.slug %}">Update song</a>{% endif %}
+    {% if perms.musica.delete_cancion %}<a style="display: block;" href="{% url 'delete_cancion' cancion.slug %}">Delete song</a>{% endif %}
+</ul>
+{% endblock contenido %}
