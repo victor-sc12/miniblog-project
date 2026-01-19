@@ -5,7 +5,7 @@ from django.forms import inlineformset_factory, formset_factory, modelformset_fa
 class AlbumForm(forms.ModelForm):
     class Meta:
         model = Album
-        exclude = ['imagen',]
+        exclude = ['imagen', 'slug']
     
     def __init__(self, *args, **kwargs):
         super(AlbumForm, self).__init__(*args, **kwargs)

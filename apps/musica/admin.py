@@ -40,7 +40,6 @@ class AlbumAdmin(admin.ModelAdmin):
 
 @admin.register(Cancion)
 class CancionAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('nombre',)}
     list_display = ['nombre', 'album__nombre', 'album__artista__nombre']
     list_filter = ['album__nombre', 'album__artista__nombre']
     search_fields = ['album__nombre', 'album__artista__nombre']
@@ -54,6 +53,16 @@ class CancionAdmin(admin.ModelAdmin):
         })
     )
     readonly_fields = ['avg_rating',]
+
+    def get_readonly_fields(self, request, obj = ...):        
+        read_only = super().get_readonly_fields(request, obj)
+        
+        if not request.user.groups.filter(name="complete_admin").exists():
+            read_only.append('slug')
+        else:
+            print('se supone que si eres admin completito')
+
+        return read_only
 
 # Register your models here.
 admin.site.register(CategoriaMusical)
