@@ -54,13 +54,13 @@ class CancionAdmin(admin.ModelAdmin):
     )
     readonly_fields = ['avg_rating',]
 
-    def get_readonly_fields(self, request, obj = ...):        
-        read_only = super().get_readonly_fields(request, obj)
+    # Función que establece que los no "complete_admin" solo puedan leer 'slug' field: 
+    def get_readonly_fields(self, request, obj = ...):      
+        # Convertir a lista (crea una nueva lista para no hacer referencia a la original)  
+        read_only = list(super().get_readonly_fields(request, obj))
         
         if not request.user.groups.filter(name="complete_admin").exists():
             read_only.append('slug')
-        else:
-            print('se supone que si eres admin completito')
 
         return read_only
 
