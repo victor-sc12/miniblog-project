@@ -3,7 +3,16 @@
     <h2>{{musica.nombre}}</h2>
     <ul>
     {% for resenia in resenias %}
-        <li><strong>{{resenia.title}}: </strong><p>{{resenia.contenido}}</p></li>
+        <li>
+            <strong>{{resenia.title}}: </strong>
+            <p>{{resenia.contenido}}</p>
+            <p>
+                Likes totales: {{resenia.likes_count}} 
+                {% if user.is_authenticated %}
+                | <a href="{% url 'liked_resenia' resenia.id %}">{% if user in resenia.likes.all %}Unlike{% else %}Like{% endif %}</a>
+                {% endif %}
+            </p>
+        </li>
     {% empty %}
         <li>Que no hay resenias, necio!!</li>
     {% endfor %}

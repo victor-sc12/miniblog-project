@@ -7,4 +7,5 @@ urlpatterns = [
     path('resenia/<slug:slug>/add/', views.add_resenia, name='add_resenia'),
     path('resenia/<slug:slug>/update/', views.edit_resenia, name='update_resenia'),
     path('resenia/<slug:slug>/delete/', views.delete_resenia, name='delete_resenia'),
+    path('resenia/<int:pk>/liked/', views.liked_resenia, name='liked_resenia'),
 ]

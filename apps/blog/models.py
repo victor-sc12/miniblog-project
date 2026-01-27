@@ -17,6 +17,10 @@ class ContenidoResenia(models.Model):
                                    related_name='liked_resenias',
                                    blank=True)
 
+    @property
+    def likes_count(self):
+        return self.likes.count()
+
     def __str__(self):
         return f'{self.title}'
     

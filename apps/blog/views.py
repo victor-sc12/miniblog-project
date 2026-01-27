@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from apps.blog.models import *
 from apps.musica.models import *
@@ -104,3 +104,15 @@ def delete_resenia(request, slug):
         return redirect('detail_view', slug)
     
     return render(request, 'blog/delete_confirm.html', {'resenia':resenia})
+
+@login_required
+def liked_resenia(request, pk):
+    resenia = get_object_or_404(ContenidoResenia, id=pk)
+    
+    like, created = Like.objects.get_or_create(user=request.user, resenia=resenia)
+
+    if not created:
+        like.delete()
+
+    # Obtener metadata de la solicitud entrante, en este caso 'HTTP_REFERER' (página de origen):
+    return redirect(request.META.get('HTTP_REFERER', 'index_view'))
