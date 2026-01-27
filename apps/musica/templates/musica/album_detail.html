@@ -3,6 +3,7 @@
     <h2>{{album.nombre}} | Detalle</h2>
     
     <p>Artista: {{album.artista.nombre}}</p>
+    <p>Album's Avarage Rating: {{album.avg_rating}} </p>
     <p>Canciones ({{album.songs}}):</p>
     <ul>
         {% for cancion in canciones %}

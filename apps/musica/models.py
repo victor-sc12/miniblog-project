@@ -6,6 +6,7 @@ from django.utils.text import slugify
 # Abstract Model:
 class BaseModel(models.Model):
     slug = models.SlugField(max_length=200, unique=True, null=True)
+    avg_rating = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True, default=None)
 
     class Meta:
         abstract = True
@@ -13,11 +14,21 @@ class BaseModel(models.Model):
     def get_slug_source(self):
         """Override en cada modelo para indicar el campo fuente"""
         raise NotImplementedError("Debes definir get_slug_source()")
+    
+    def get_query_source(self):
+        """Override en cada modelo para indicar el query a partir del cual se obtendrá el rating"""
+        raise NotImplementedError("Debes definir get_query_source()")
+
+    def set_avg_value(self):
+        query, attr = self.get_query_source()
+        avg_agg = query.aggregate(promedio=Avg(attr))
+        return avg_agg['promedio']
 
     def save(self, *args, **kwargs):
         source_value = self.get_slug_source()
 
         if self.pk:
+            self.avg_rating = self.set_avg_value()
             original = self.__class__.objects.get(id = self.pk)
 
             # Si se actualiza el slug source o si no hay slug value en instancia existente:
@@ -25,6 +36,7 @@ class BaseModel(models.Model):
                 self.slug = slugify(source_value)
         else:
             self.slug = slugify(source_value)
+            self.avg_rating = None
 
         return super().save(*args, **kwargs)
 
@@ -37,6 +49,9 @@ class Artista(BaseModel):
     
     def get_slug_source(self):
         return self.nombre
+    
+    def get_query_source(self):
+        return self.albums.all(), 'avg_rating'
 
     @property
     def albumes(self):
@@ -60,9 +75,6 @@ class CategoriaMusical(models.Model):
 
     def __str__(self):
         return self.nombre
-    
-    def get_slug_source(self):
-        return self.nombre
 
 class Album(BaseModel):
     nombre = models.CharField(max_length=200)
@@ -77,6 +89,9 @@ class Album(BaseModel):
     
     def get_slug_source(self):
         return self.nombre
+    
+    def get_query_source(self):
+        return self.canciones.all(), 'avg_rating'
 
     @property
     def songs(self):
@@ -86,7 +101,7 @@ class Cancion(BaseModel):
     nombre = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='canciones')
-    avg_rating = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True, default=None)
+    # avg_rating = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True, default=None)
 
     def __str__(self):
         return self.nombre
@@ -94,17 +109,12 @@ class Cancion(BaseModel):
     def get_slug_source(self):
         return self.nombre
 
+    def get_query_source(self):
+        return self.resenias.all(), 'calificacion'
+
     @property
     def resenias_count(self):
         return self.resenias.count()
 
-    def media_rating(self):
-        if not self.id:
-            return None
-        resenias = self.resenias.all()
-        avg_rating = resenias.aggregate(promedio=Avg('calificacion'))
-        return avg_rating['promedio']
-
     def save(self, *args, **kwargs):
-        self.avg_rating = self.media_rating()
         super().save(*args, **kwargs)
