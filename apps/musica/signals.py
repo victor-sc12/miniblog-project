@@ -3,26 +3,22 @@ from django.dispatch import receiver
 from apps.blog.models import ContenidoResenia
 from .models import *
 
-@receiver(post_save, sender=ContenidoResenia)
-def set_song_media_rating(sender, instance, created, **kwargs):
+@receiver([post_save, post_delete], sender=ContenidoResenia)
+def set_song_media_rating(sender, instance, **kwargs):
 
-    # Receiver funct para actualizar rating promedio de canción en cuanto se instancie nuevo obj Resenia
-    print("Seteando rating promedio...")
-    if created:
-        song = Cancion.objects.get(id=instance.musica_id)
-        song.save()
-
-@receiver(post_save, sender=ContenidoResenia)
-def update_song_media_rating(sender, instance, **kwargs):
+    # Receiver funct para actualizar 'avg_rating' en cascada de modelos correspondientes:
+    # Cancion -> Album -> Artista 
+    # Se ejecuta automáticamente al crear/actualizar/eliminar una reseña
     
-    # Receiver funct para actualizar rating promedio de canción en cuanto se actualize una instancia existente de Resenia
-    print("Actualizando rating promedio...")
-    song = Cancion.objects.get(id=instance.musica_id)
-    song.save()
+    cancion = instance.musica
 
-@receiver(post_delete, sender=ContenidoResenia)
-def update_song_media_rating_post_delete(sender, instance, **kwargs):
+    # 1ro actualizamos 'avg_rating' de cancion
+    cancion.save()
 
-    print("Actualizando rating promedio pos eliminación de review...")
-    song = Cancion.objects.get(id=instance.musica_id)
-    song.save()
+    # 2do actualizamos 'avg_rating' de album
+    album = cancion.album
+    album.save()
+
+    # 3ro actualizamos 'avg_rating' de artista
+    artista = album.artista
+    artista.save()
