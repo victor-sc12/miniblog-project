@@ -101,6 +101,3 @@ class Cancion(BaseModel):
     @property
     def resenias_count(self):
         return self.resenias.count()
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)

@@ -1,0 +1,217 @@
+Listado de rutas de carpetas
+El número de serie del volumen es 729E-13E9
+C:.
+¦   db.sqlite3
+¦   estructura_proyecto.txt
+¦   manage.py
+¦   
++---apps
+¦   +---blog
+¦   ¦   ¦   admin.py
+¦   ¦   ¦   apps.py
+¦   ¦   ¦   forms.py
+¦   ¦   ¦   models.py
+¦   ¦   ¦   tests.py
+¦   ¦   ¦   urls.py
+¦   ¦   ¦   views.py
+¦   ¦   ¦   __init__.py
+¦   ¦   ¦   
+¦   ¦   +---fixtures
+¦   ¦   ¦       blog.json
+¦   ¦   ¦       
+¦   ¦   +---migrations
+¦   ¦   ¦   ¦   0001_initial.py
+¦   ¦   ¦   ¦   0002_contenidoresenia_delete_contenido.py
+¦   ¦   ¦   ¦   0003_contenidoresenia_calificacion_and_more.py
+¦   ¦   ¦   ¦   0004_alter_contenidoresenia_calificacion.py
+¦   ¦   ¦   ¦   0005_contenidoresenia_user_and_more.py
+¦   ¦   ¦   ¦   0006_alter_contenidoresenia_user.py
+¦   ¦   ¦   ¦   0007_like_contenidoresenia_likes_like_user_resenia_uniq.py
+¦   ¦   ¦   ¦   __init__.py
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---__pycache__
+¦   ¦   ¦           0001_initial.cpython-314.pyc
+¦   ¦   ¦           0002_contenidoresenia_delete_contenido.cpython-314.pyc
+¦   ¦   ¦           0003_contenidoresenia_calificacion_and_more.cpython-314.pyc
+¦   ¦   ¦           0004_alter_contenidoresenia_calificacion.cpython-314.pyc
+¦   ¦   ¦           0005_contenidoresenia_user_and_more.cpython-314.pyc
+¦   ¦   ¦           0006_alter_contenidoresenia_user.cpython-314.pyc
+¦   ¦   ¦           0007_like_contenidoresenia_likes_like_user_resenia_uniq.cpython-314.pyc
+¦   ¦   ¦           __init__.cpython-314.pyc
+¦   ¦   ¦           
+¦   ¦   +---templates
+¦   ¦   ¦   +---blog
+¦   ¦   ¦           add_resenia.html
+¦   ¦   ¦           delete_confirm.html
+¦   ¦   ¦           index.html
+¦   ¦   ¦           music_detail.html
+¦   ¦   ¦           update_resenia.html
+¦   ¦   ¦           
+¦   ¦   +---__pycache__
+¦   ¦           admin.cpython-314.pyc
+¦   ¦           apps.cpython-314.pyc
+¦   ¦           forms.cpython-314.pyc
+¦   ¦           models.cpython-314.pyc
+¦   ¦           urls.cpython-314.pyc
+¦   ¦           views.cpython-314.pyc
+¦   ¦           __init__.cpython-314.pyc
+¦   ¦           
+¦   +---musica
+¦   ¦   ¦   admin.py
+¦   ¦   ¦   apps.py
+¦   ¦   ¦   forms.py
+¦   ¦   ¦   models.py
+¦   ¦   ¦   signals.py
+¦   ¦   ¦   tests.py
+¦   ¦   ¦   urls.py
+¦   ¦   ¦   views.py
+¦   ¦   ¦   __init__.py
+¦   ¦   ¦   
+¦   ¦   +---fixtures
+¦   ¦   ¦       musica.json
+¦   ¦   ¦       
+¦   ¦   +---migrations
+¦   ¦   ¦   ¦   0001_initial.py
+¦   ¦   ¦   ¦   0002_album_imagen.py
+¦   ¦   ¦   ¦   0003_cancion_slug_alter_album_imagen.py
+¦   ¦   ¦   ¦   0004_alter_album_artista_alter_album_imagen_and_more.py
+¦   ¦   ¦   ¦   0005_cancion_avg_rating.py
+¦   ¦   ¦   ¦   0006_artista_slug.py
+¦   ¦   ¦   ¦   0007_alter_artista_slug.py
+¦   ¦   ¦   ¦   0008_alter_artista_slug.py
+¦   ¦   ¦   ¦   0009_album_slug.py
+¦   ¦   ¦   ¦   0010_remove_cancion_slug.py
+¦   ¦   ¦   ¦   0011_cancion_slug.py
+¦   ¦   ¦   ¦   0012_album_avg_rating_artista_avg_rating.py
+¦   ¦   ¦   ¦   __init__.py
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---__pycache__
+¦   ¦   ¦           0001_initial.cpython-313.pyc
+¦   ¦   ¦           0001_initial.cpython-314.pyc
+¦   ¦   ¦           0002_album_imagen.cpython-313.pyc
+¦   ¦   ¦           0002_album_imagen.cpython-314.pyc
+¦   ¦   ¦           0003_cancion_slug_alter_album_imagen.cpython-313.pyc
+¦   ¦   ¦           0003_cancion_slug_alter_album_imagen.cpython-314.pyc
+¦   ¦   ¦           0004_alter_album_artista_alter_album_imagen_and_more.cpython-313.pyc
+¦   ¦   ¦           0004_alter_album_artista_alter_album_imagen_and_more.cpython-314.pyc
+¦   ¦   ¦           0005_cancion_avg_rating.cpython-313.pyc
+¦   ¦   ¦           0005_cancion_avg_rating.cpython-314.pyc
+¦   ¦   ¦           0006_artista_slug.cpython-313.pyc
+¦   ¦   ¦           0006_artista_slug.cpython-314.pyc
+¦   ¦   ¦           0007_alter_artista_slug.cpython-313.pyc
+¦   ¦   ¦           0007_alter_artista_slug.cpython-314.pyc
+¦   ¦   ¦           0008_alter_artista_slug.cpython-313.pyc
+¦   ¦   ¦           0008_alter_artista_slug.cpython-314.pyc
+¦   ¦   ¦           0009_album_slug.cpython-313.pyc
+¦   ¦   ¦           0009_album_slug.cpython-314.pyc
+¦   ¦   ¦           0010_remove_cancion_slug.cpython-314.pyc
+¦   ¦   ¦           0011_cancion_slug.cpython-314.pyc
+¦   ¦   ¦           0012_album_avg_rating_artista_avg_rating.cpython-314.pyc
+¦   ¦   ¦           __init__.cpython-313.pyc
+¦   ¦   ¦           __init__.cpython-314.pyc
+¦   ¦   ¦           
+¦   ¦   +---scripts
+¦   ¦   ¦   ¦   kwargs_class.py
+¦   ¦   ¦   ¦   __init__.py
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---__pycache__
+¦   ¦   ¦           kwargs_class.cpython-313.pyc
+¦   ¦   ¦           kwargs_class.cpython-314.pyc
+¦   ¦   ¦           __init__.cpython-313.pyc
+¦   ¦   ¦           __init__.cpython-314.pyc
+¦   ¦   ¦           
+¦   ¦   +---templates
+¦   ¦   ¦   +---musica
+¦   ¦   ¦           add_album.html
+¦   ¦   ¦           add_cancion.html
+¦   ¦   ¦           album_delete.html
+¦   ¦   ¦           album_detail.html
+¦   ¦   ¦           album_update.html
+¦   ¦   ¦           artists.html
+¦   ¦   ¦           cancion_delete.html
+¦   ¦   ¦           cancion_detail.html
+¦   ¦   ¦           cancion_update.html
+¦   ¦   ¦           
+¦   ¦   +---__pycache__
+¦   ¦           admin.cpython-313.pyc
+¦   ¦           admin.cpython-314.pyc
+¦   ¦           apps.cpython-313.pyc
+¦   ¦           apps.cpython-314.pyc
+¦   ¦           forms.cpython-313.pyc
+¦   ¦           forms.cpython-314.pyc
+¦   ¦           models.cpython-313.pyc
+¦   ¦           models.cpython-314.pyc
+¦   ¦           signals.cpython-313.pyc
+¦   ¦           signals.cpython-314.pyc
+¦   ¦           urls.cpython-313.pyc
+¦   ¦           urls.cpython-314.pyc
+¦   ¦           views.cpython-313.pyc
+¦   ¦           views.cpython-314.pyc
+¦   ¦           __init__.cpython-313.pyc
+¦   ¦           __init__.cpython-314.pyc
+¦   ¦           
+¦   +---profiles
+¦       ¦   admin.py
+¦       ¦   apps.py
+¦       ¦   models.py
+¦       ¦   signals.py
+¦       ¦   tests.py
+¦       ¦   views.py
+¦       ¦   __init__.py
+¦       ¦   
+¦       +---migrations
+¦       ¦   ¦   0001_initial.py
+¦       ¦   ¦   __init__.py
+¦       ¦   ¦   
+¦       ¦   +---__pycache__
+¦       ¦           0001_initial.cpython-314.pyc
+¦       ¦           __init__.cpython-314.pyc
+¦       ¦           
+¦       +---templates
+¦       ¦   +---profiles
+¦       ¦           login.html
+¦       ¦           
+¦       +---__pycache__
+¦               admin.cpython-314.pyc
+¦               apps.cpython-314.pyc
+¦               models.cpython-314.pyc
+¦               signals.cpython-314.pyc
+¦               __init__.cpython-314.pyc
+¦               
++---media
+¦   +---musica
++---miniblog
+¦   ¦   asgi.py
+¦   ¦   settings.py
+¦   ¦   urls.py
+¦   ¦   wsgi.py
+¦   ¦   __init__.py
+¦   ¦   
+¦   +---__pycache__
+¦           settings.cpython-314.pyc
+¦           urls.cpython-314.pyc
+¦           wsgi.cpython-314.pyc
+¦           __init__.cpython-314.pyc
+¦           
++---static
+¦   +---css
+¦   ¦       app.css
+¦   ¦       app.css.map
+¦   ¦       app.scss
+¦   ¦       
+¦   +---js
+¦   +---sass
+¦       +---base
+¦       ¦       _globales.scss
+¦       ¦       _index.scss
+¦       ¦       _utilities.scss
+¦       ¦       _vars.scss
+¦       ¦       
+¦       +---blog
+¦               _blog.scss
+¦               _contenido.scss
+¦               _index.scss
+¦               
++---templates
+        base.html
+        
