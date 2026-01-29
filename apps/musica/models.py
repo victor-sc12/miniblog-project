@@ -56,19 +56,6 @@ class Artista(BaseModel):
     @property
     def albumes(self):
         return self.albums.count()
-    
-    @property
-    def media_rating(self):
-        sum_avgs, cont = 0, 0
-        for album in self.albums.all():
-            if album.canciones.exclude(avg_rating=None):
-                promedio = album.canciones.aggregate(promedio=Avg('avg_rating'))
-                cont += 1
-                sum_avgs += promedio['promedio']
-
-        if cont == 0:
-            return None
-        return sum_avgs / cont
 
 class CategoriaMusical(models.Model):
     nombre = models.CharField(max_length=200)
@@ -101,7 +88,6 @@ class Cancion(BaseModel):
     nombre = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='canciones')
-    # avg_rating = models.DecimalField(max_digits=3, decimal_places=2, null=True, blank=True, default=None)
 
     def __str__(self):
         return self.nombre
