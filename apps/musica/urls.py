@@ -3,6 +3,11 @@ from . import views
 
 urlpatterns = [
     
+    # Artists management urls:
+    path('artist/add/', views.add_artista, name='add_artista'),
+    path('artist/<slug:slug>/update', views.artista_update, name='update_artista'),
+    path('artist/<slug:slug>/delete/', views.artista_delete, name='delete_artista'),
+
     # Album management urls:
     path('artists/', views.artists_view, name='artists_view'),
     path('album/<slug:slug>/add/', views.add_album, name='add_album'),

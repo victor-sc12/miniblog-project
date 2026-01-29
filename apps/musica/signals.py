@@ -4,7 +4,7 @@ from apps.blog.models import ContenidoResenia
 from .models import *
 
 @receiver([post_save, post_delete], sender=ContenidoResenia)
-def set_song_media_rating(sender, instance, **kwargs):
+def update_ratings_cascade(sender, instance, **kwargs):
 
     # Receiver funct para actualizar 'avg_rating' en cascada de modelos correspondientes:
     # Cancion -> Album -> Artista 

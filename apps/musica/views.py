@@ -18,6 +18,51 @@ def album_detail(request, slug):
     canciones = album.canciones.all()
     return render(request, 'musica/album_detail.html', {'album':album, 'canciones':canciones})
 
+
+# Artist C-U-D Views:
+@login_required
+@permission_required('musica.add_artista', raise_exception=True)
+def add_artista(request):
+    form = ArtistForm()
+
+    if request.method == 'POST':
+        form = ArtistForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('artists_view')
+        
+    return render(request, 'musica/add_artista.html', {'form':form})
+
+@login_required
+@permission_required('musica.change_artista', raise_exception=True)
+def artista_update(request, slug):
+    artista = Artista.objects.get(slug=slug)
+    form = ArtistForm(instance=artista)
+
+    if request.method == 'POST':
+        form = ArtistForm(request.POST, instance=artista)
+        if form.is_valid():
+            form.save()
+            return redirect('artists_view')
+        
+    return render(request, 'musica/artista_update.html', {'form':form, 'artista':artista})
+
+@login_required
+@permission_required('musica.delete_artista', raise_exception=True)
+def artista_delete(request, slug):
+    artista = Artista.objects.prefetch_related('albums').get(slug=slug)
+
+    # Obtener número de albumes y canciones del artista:
+    num_albums = artista.albumes
+    num_songs = artista.albums.aggregate(canciones = Count('canciones'))
+
+    if request.method == 'POST':
+        artista.delete()
+        return redirect('artists_view')
+    
+    return render(request, 'musica/artista_delete.html', 
+                  {'artista': artista, 'num_albums':num_albums, 'num_songs':num_songs['canciones']})
+
 # Album CRUD Views:
 @login_required
 @permission_required('musica.add_album', raise_exception=True)

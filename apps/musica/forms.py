@@ -2,10 +2,15 @@ from django import forms
 from .models import *
 from django.forms import inlineformset_factory, formset_factory, modelformset_factory, BaseInlineFormSet
 
+class ArtistForm(forms.ModelForm):
+    class Meta:
+        model = Artista
+        fields = ['nombre']
+
 class AlbumForm(forms.ModelForm):
     class Meta:
         model = Album
-        exclude = ['imagen', 'slug']
+        exclude = ['avg_rating', 'imagen', 'slug']
     
     def __init__(self, *args, **kwargs):
         super(AlbumForm, self).__init__(*args, **kwargs)

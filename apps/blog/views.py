@@ -80,6 +80,7 @@ def add_resenia(request, slug):
     return render(request, 'blog/add_resenia.html', {'form':form, 'musica':musica})
 
 @login_required
+@permission_required('blog.change_contenidoresenia', raise_exception=True)
 def edit_resenia(request, slug):
     
     resenia = ContenidoResenia.objects.select_related('musica', 'user').get(musica__slug=slug, user=request.user)
@@ -96,6 +97,7 @@ def edit_resenia(request, slug):
     return render(request, 'blog/update_resenia.html', {'form':form, 'musica':musica})
 
 @login_required
+@permission_required('blog.delete_contenidoresenia', raise_exception=True)
 def delete_resenia(request, slug):
     resenia = ContenidoResenia.objects.select_related('musica', 'user').get(musica__slug=slug, user=request.user)
     

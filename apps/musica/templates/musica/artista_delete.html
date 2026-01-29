@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block contenido %}
+    <h2>Eliminar Artista | {{artista.nombre}}</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p style="text-transform: uppercase;"><strong>Decisión altamente crítica</strong></p>
+        <p><strong>¿Seguro que deseas eliminar este artista y todas sus albumes 
+            ({{num_albums}}) y canciones ({{num_songs}})?</strong></p>
+        <button type="submit">Eliminar</button>
+        <a href="{% url 'artists_view' %}">Cancelar</a>
+    </form>
+{% endblock %}

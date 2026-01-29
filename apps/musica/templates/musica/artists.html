@@ -8,7 +8,16 @@
         </tr>
         {% for artist in artistas %}
         <tr>
-            <td>{{artist.nombre}}</td>
+            <td>
+                <p>{{artist.nombre}}</p>
+                
+                {% if user.is_authenticated %}
+
+                {% if perms.musica.change_artista %}<a href="{% url 'update_artista' artist.slug %}">(Update)</a> | {% endif %}
+                {% if perms.musica.delete_artista %}<a href="{% url 'delete_artista' artist.slug %}">(Delete)</a>{% endif %}
+
+                {% endif %}
+            </td>
             <td>{{artist.avg_rating}}</td>
             <td>
                 <ul>
@@ -31,5 +40,10 @@
             <td>No hay albumes que mostrar</td>
         </tr>
         {% endfor %}
+        {% if user.is_authenticated and perms.musica.add_artista %}
+        <tr>
+            <td><a href="{% url 'add_artista' %}">Add new 'Artista'</a></td>
+        </tr>
+        {% endif %}
     </table>
 {% endblock contenido %}
